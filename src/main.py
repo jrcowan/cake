@@ -5,7 +5,7 @@ menu_options = {
     2: "Tell me what birthdays you are tracking.",
     3: "Make changes to a birthday.",
     4: "Forget a birthday.",
-    5: "Go away"
+    5: "Go away."
 }
 
 
