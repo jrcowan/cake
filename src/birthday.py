@@ -2,9 +2,12 @@ from datetime import date
 
 
 def create_birthday():
+
     while True:
         birthday = get_birthday_value()
-        confirm_birthday_value(birthday)
+        confirmed = confirm_birthday_value(birthday)
+        if confirmed:
+            break
 
 
 def get_birthday_value():
@@ -22,6 +25,13 @@ def confirm_birthday_value(birthday):
     answer = input().lower()
     if answer == "yes":
         print("Understood! I will remember this for you.")
+        return True
+    elif answer == "no":
+        print("Oh sorry, let's try that again.")
+        return False
+    else:
+        print("Uh, I didn't understand that. Let's try that again.")
+        return False
 
 
 def list_birthdays():  # TODO: create list_birthdays
