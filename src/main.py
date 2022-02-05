@@ -1,4 +1,5 @@
 from src.birthday import *
+from src.sqlite import *
 
 menu_options = {
     1: "Remember a new birthday.",
@@ -7,6 +8,8 @@ menu_options = {
     4: "Forget a birthday.",
     5: "Go away."
 }
+
+database = r"cake.db"
 
 
 def print_menu():
@@ -20,12 +23,17 @@ def print_menu():
 if __name__ == '__main__':
     print("\n")
     print("Welcome to cake, the tool that reminds you of birthdays that you have a tendency to forget about.")
+
+    connection = create_connection(r'cake.sqlite')
+    if connection is not None:
+        create_table(connection, sql_create_birthdays_table)
+
     while True:
         print_menu()
         option = int(input('Enter your choice: '))
 
         if option == 1:
-            birthday = create_birthday()
+            birthday = create_birthday(connection)
         elif option == 2:
             list_birthdays()
         elif option == 3:
@@ -36,3 +44,4 @@ if __name__ == '__main__':
             exit()
         else:
             print('I didn\'t understand that. Let\'s try this again.')
+
