@@ -44,4 +44,3 @@ if __name__ == '__main__':
             exit()
         else:
             print('I didn\'t understand that. Let\'s try this again.')
-

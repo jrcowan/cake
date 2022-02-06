@@ -1,8 +1,6 @@
 import sqlite3
 from sqlite3 import Error
 
-from src import birthday
-
 sql_create_birthdays_table = """ CREATE TABLE IF NOT EXISTS birthdays (
                                        id integer PRIMARY KEY,
                                        name text,
@@ -39,7 +37,7 @@ def create_table(conn, create_table_sql):
         print(e)
 
 
-def submit_birthday(connection, name, date):
+def submit_birthday(connection, birthday):
     """
     Submit a new birthday into the birthdays table
     :param connection:
@@ -49,7 +47,6 @@ def submit_birthday(connection, name, date):
     sql = ''' INSERT INTO birthdays(name, date)
               VALUES(?, ?) '''
     cur = connection.cursor()
-    birthday = (name, date)
     cur.execute(sql, birthday)
     connection.commit()
     return cur.lastrowid

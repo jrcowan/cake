@@ -1,27 +1,25 @@
 from datetime import date
-from sqlite import *
+from src.sqlite import *
 
 
 def create_birthday(connection):
     while True:
         name = get_name()
-        birthday = get_birthday_value()
-        confirmed = confirm_input(name, birthday)
+        birthday = get_birthday()
+        confirmed = confirm_birthday(name, birthday)
         if confirmed:
-            submit_birthday(connection, name, birthday)
+            birthday = (name, birthday)
+            submit_birthday(connection, birthday)
             break
 
 
 def get_name():
-    try:
-        print("Whose birthday am I remembering?")
-        name = input()
-        return name
-    except (ValueError, IndexError, OverflowError):
-        print("Input was not recognized.")
+    print("Whose birthday will I be remembering?")
+    name = input()
+    return name
 
 
-def get_birthday_value():
+def get_birthday():
     try:
         print("When is the birthday? [dd/mm/yyyy]")
         birthday = input().split('/')
@@ -31,7 +29,7 @@ def get_birthday_value():
         print("Input was not recognized.")
 
 
-def confirm_input(name, birthday):
+def confirm_birthday(name, birthday):
     print(f"You said {name}'s birthday is {birthday.day}/{birthday.month}/{birthday.year}. Is that correct?")
     answer = input().lower()
     if answer == "yes":
@@ -55,3 +53,4 @@ def update_birthday():  # TODO: create update_birthday
 
 def delete_birthday():  # TODO: create delete_birthday
     return any
+
