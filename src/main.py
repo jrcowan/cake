@@ -1,5 +1,7 @@
 from src.birthday import *
 from src.sqlite import *
+from src.console.create import *
+
 
 menu_options = {
     1: "Remember a new birthday.",
@@ -8,6 +10,7 @@ menu_options = {
     4: "Forget a birthday.",
     5: "Go away."
 }
+
 
 database = r"cake.db"
 
@@ -33,7 +36,8 @@ if __name__ == '__main__':
         option = int(input('Enter your choice: '))
 
         if option == 1:
-            birthday = create_birthday(connection)
+            name, date = get_input_for_create()
+            submit_birthday(connection, (name, date))
         elif option == 2:
             list_birthdays()
         elif option == 3:
