@@ -1,10 +1,3 @@
-from src.sqlite import *
-
-
-def confirm_birthday(name, birthday):
-    return any
-
-
 def list_birthdays():  # TODO: create list_birthdays
     return any
 
