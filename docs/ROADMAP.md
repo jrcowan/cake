@@ -2,10 +2,10 @@
 
 ## 0.1.0
 - [ ] infrastructure
-  - [ ] setup rds
+  - [ ] setup dynamodb
   - [ ] setup api gateway
   - [ ] setup lambda 
-    - [ ] enable to store data in rds
+    - [ ] enable to store data in dynamodb
     - [ ] create birthday check mechanism
     - [ ] create notification mechanism
   - [ ] setup ci/cd 
