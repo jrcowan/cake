@@ -1,6 +1,6 @@
 from src.birthday import list_birthdays, update_birthday, delete_birthday
 from src.console.create import get_input_for_create
-from src.sqlite import submit_birthday
+from src import submit_birthday
 
 menu_options = {
     1: "Remember a new birthday.",

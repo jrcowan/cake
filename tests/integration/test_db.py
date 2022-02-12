@@ -1,5 +1,4 @@
 import unittest
-from src.sqlite import *
 
 
 class MyTestCase(unittest.TestCase):
