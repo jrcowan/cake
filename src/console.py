@@ -1,5 +1,6 @@
+from datetime import date
+
 from src.backend.birthday import list_birthdays, update_birthday, delete_birthday
-from src.frontend.console.create import get_input_for_create
 from src.backend.sqlite.create import submit_birthday
 
 menu_options = {
@@ -40,3 +41,33 @@ def start_console(connection):
             exit()
         else:
             print('I didn\'t understand that. Let\'s try this again.')
+
+
+def get_input_for_create():
+    print("Whose birthday will I be remembering?")
+    name = input()
+
+    while True:
+        try:
+            print("When is the birthday? [dd/mm/yyyy]")
+            birthday = input().split('/')
+            birthday = date(int(birthday[2]), int(birthday[1]), int(birthday[0]))
+            break
+        except (ValueError, IndexError, OverflowError):
+            print("I'm confused! Let's try that again.")
+
+    while True:
+        print(f"You said {name}'s birthday is {birthday.day}/{birthday.month}/{birthday.year}. Is that correct?")
+        answer = input().lower()
+
+        if answer == "yes" or "yeah":
+            print("Understood! I will remember this for you.")
+            confirmed = True
+            break
+        elif answer == "no":
+            print("Oh sorry, let's try that again.")
+            confirmed = False
+        else:
+            print("Uh, I didn't understand that. Let's try that again.")
+    if confirmed:
+        return name, birthday
